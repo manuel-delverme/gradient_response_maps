@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <!--
+				<section>
+                    <section>
+                        Why should we need introduce robots in the learning process?
+                        <p class="fragment">
+                            Robots are regarded as peers and leverage natural communication means (e.g., speech, gestures, gaze, and facial expressions)
+                            to engage with us in more natural, intuitive, and interpersonal ways
+                        </p>
+                        <p class="fragment">
+                            Robots scale
+                        </p>
+                        <p class="fragment">
+                            Cheaper to train than a Teacher
+                        </p>
+                        <p class="fragment">
+                            Student-paced, adaptive software.
+                        </p>
+                    </section>
+                </section>
+                <section>
+                    What's stopping them from being useful?
+                    <p class="fragment">
+                        Robot’s perceived credibility as an educator is impacted by how socially contingent it behaves.
+                    </p>
+                </section>
+                -->
+                <section>
+                    <section>
+                        What this work is aimed at?
+                        <p class="fragment">
+                            Help children improve language proficiency trough storytelling
+                        </p>
+                    </section>
+                    <section>
+                        How are we achieving that?
+                        <p class="fragment">
+                            Using backchannels to keep the student engaged
+                            respond to the speaker's nonverbal feedback requests and communicate that the listener is paying attention and following along.
+                        </p>
+                        <p class="fragment">
+                            A robot that contingently backchannels will be perceived as an attentive listener by child storytellers and will affect their storytelling behavior.
+                        </p>
+                    </section>
+                    <section>
+                        Methodology, first step
+                        <p class="fragment">
+                            It is seldom studied how children (4-6 yo.) develop and produce speaker cue to request feedback and how they understand (decode) those signals as a listener.
+                        </p>
+                        <p class="fragment">
+                            1) identify backchanneling behaviors that indicate the engagement state of the listener, 
+                        </p>
+                        <p class="fragment">
+                            2) identify speaker cues that child listeners acknowledge and respond to
+                        </p>
+                        <p class="fragment">
+                            3) characterize the bidirectionality of nonverbal behaviors (i.e., can children decode what they encode?)
+                        </p>
+                    </section>
+                    <section>
+                        Methodology, second step
+                        <p class="fragment">
+                            define a robot listener’s action space based on the identified child listener’s backchanneling behaviors
+                        </p>
+                        <p class="fragment">
+                            design a backchanneling opportunity prediction (BOP) model around the identified child speaker cues
+                        </p>
+                        <p class="fragment">
+                            To the best of our knowledge, we pioneer the development of a computational backchanneling model based on children voices and behaviors.
+                        </p>
+                        <p class="fragment">
+                            embed the BOP model on a social robot listener and respond appropriately and reciprocally to a child as he/she tells a story.
+                        </p>
+                    </section>
+                    <section>
+                        Resutls:
+                        <p class="fragment">
+                            It works!
+                        </p>
+                        <p class="fragment">
+                            We find that children do perceive the contingent backchanneling robot as an attentive listener and stay engaged by directing their storytelling to the contingent robot versus the non-contingent robot.
+                        </p>
+                    </section>
+                    <section>
+                        Recent research in Human-Robot Interaction has seen an increasing interest from the field of education.
+                        Robots present attractive features for learners, enhancing the learning experience with physical and/or social interactions.
+                    </section>
+                    <section>
+                        Vertical Slide 3
+                    </section>
+                </section>
+				<section>
+                    The current state of the art presents robots used in various learning scenarios related to non-programming curricula.
+                </section>
+				<section>
+                    Often involving social robots, these scenario usually investigate the social aspect of the robot-learner relationship (i.e.
+                    empathy [4], immediacy [3] or engagement [1, 5]).
+                </section>
+				<section>
+                    While certain research focus in one-to-one setup exploiting social and task adaptive systems to individuals [THIS WORK],
+                    others aim to provide a tool for the therapists or educators in their teaching
+                    practice or to use the robot as a facilitator in a collaborative learning setup [6].
+                </section>
+				<section>
+                    Robots have been researched in a variety of social situations e.g. a robot assistant [19], a robot tutor [6], a robot listener [12].
+                </section>
+				<section>
+                    Storytelling is well-known amongst humans.
+                    We listen to stories told by our parents as early as being a child, be it bedtime stories or facts about the world disguised as stories.
+                    Often times facts about social norms, values or general information about a particular society are communicated to others through fairy stories [1].
+
+                    Fairy stories do not confine on children.
+                    It is argued that “the association of children and fairy-stories is an accident of our domestic history” [2].
+                    The vast efforts made with all kinds of modern media such as film, TV series, computer games and audio books tell us, that a large part of the population is indeed interested in the reception of stories.
+                </section>
+				<section>
+                    The medium similar to the original experience of a storyteller telling a story is the audio book, with a performing voice (the narrator) and a semiotic content (the narrative) [3].
+                    It is sometimes supported by sound effects or music, although it lacks the presence of the storyteller him or herself.
+                    The rise of the audio book (sales went up by several magnitudes since the 2000s [3]) was debated fiercely by literacy-through-books apologists predicting a new illiteracy through audio books [3].
+                    On the other hand, the audio book could be seen not as an advancement but as a new mode of reception, that has more in common with the storytelling of oral societies - like in our own some hundred years ago [4] - than with the traditional book.
+                </section>
+				<section>
+                    In our society of the future, social robots are supposed to be part of our lifes, and current research and industry are working towards robots as social companions, teachers or care-givers. Those domestic robots could be used to tell stories to their users, e.g. for entertainment or educational purposes. However, it is not clear whether the robot is as good as traditional media, or even bears potential to exceed current ways of storytelling. In this paper, we investigate the
+                    presence of a social robot as a storyteller compared to a human storyteller in the form of an audio book. Therefore we worked on a robot that should tell a story similarly in affect and effect to a human storyteller.
+                </section>
+				<section>
+                    A physical robot is more engaging and thus able to persuade recipients, which makes them focus on certain events occurring in the narrative [5]. There are requirements for telling a story right. Important cues are pitch, words, energy, pauses of the voice, gaze [6] as well as emotional expressivity [7], especially in the face [5]. The robot’s face is an important display for showing emotions [8, 9]. Emotions are important for perceiving narrative as previous research has shown
+                    [10, 11, 12]. To maximize the positive effect of the robot on the reception experience, the robot should be as natural, believable or life-like as possible.
+                </section>
+				<section>
+                Since compounded cue contexts have a higher likelihood of elici-ting a response from listeners, robot storytellers can manipulate their production of nonverbal speaker cues to deliberately gain more information.
+                In moments of high uncertainty about the listener, a social robot can plan to emit an appropriate cue context to strongly elicit a response that can reduce state uncertainty.
+                rough cueing actions, social robots can pursue a proactive form of inference to better understand their partner’s emotional state.
+                Toward this, an immediate extension of this work is to validate whether robot-generated speaker cues result in similar response rates from children listeners.
+                To develop a robot capable of producing these nonverbal cues, we refer readers to our prior work in modeling prosodic-based cues through a rule-based method (Park etal., 2017). 
+                </section>
+				<section>
+                    While there has been a growing body of work in childrobot
+                    interaction, we still have very little knowledge regarding
+                    young children’s speaking and listening dynamics
+                    and how a robot companion should decode these behaviors
+                    and encode its own in a way children can understand.
+                    In developing a backchannel prediction model based on observed
+                    nonverbal behaviors of 4–6 year-old children, we investigate
+                    the effects of an attentive listening robot on a
+                    child’s storytelling. We provide an extensive analysis of
+                    young children’s nonverbal behavior with respect to how
+                    they encode and decode listener responses and speaker cues.
+                    Through a collected video corpus of peer-to-peer storytelling
+                    interactions, we identify attention-related listener behaviors
+                    as well as speaker cues that prompt opportunities for listener
+                    backchannels. Based on our findings, we developed a
+                    backchannel opportunity prediction (BOP) model that detects
+                    four main speaker cue events based on prosodic features
+                    in a child’s speech. This rule-based model is capable of accurately
+                    predicting backchanneling opportunities in our corpora.
+                    We further evaluate this model in a human-subjects
+                    experiment where children told stories to an audience of two
+                    robots, each with a different backchanneling strategy. We
+                    find that our BOP model produces contingent backchannel
+                    responses that conveys an increased perception of an attentive
+                    listener, and children prefer telling stories to the BOP
+                    model robot$^
+                </section>
+				<section>
+                    enables long term interaction
+                </section>
+				<section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
