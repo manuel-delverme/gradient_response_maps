@@ -1,0 +1,131 @@
+why?:
+robotics, real time and fast matching
+
+
+related to 7, 8 which consider only images and their gradients
+work if the object is not textured enough to use feature point tecniques (what?)
+provides coarse extimation of the POSE
+
+MAIN CONTRIBUTION[s]:
+* resistance to background cluttering
+* faster for larger templates (minor contribution)
+
+
+* Instead of making the templates invariant
+to small deformations and translations by considering
+dominant orientations only as in [7], we build a representation
+of the input images which has similar invariance
+properties but consider all gradient orientations
+in local image neighborhoods.
+
+* new similarity measure and 
+above this helps to avoid strong gradients in the background
+
+* this is CPU aware, hence we keep keep in consideration cpu cache locality
+and SSE parallelization
+
+
+wrong approach:
+
+looking at
+1) calculate gradients (color, surface normals)
+2) extract dominant orientation (color, surface normals) to add some translation/deformation invariance and with few FP
+is vulnearble to background clutter!
+
+
+our approach:
+
+cosine distance: disregard magnitudo (contrast change) AND sub-linear for x~0 hence invariance to translations
+
+orientation reference template vs image position
+
+in template, extract a (small) set of discriminant gradient orientations from 
+the template (pink arrow) in strenght of their norm penalized by the numbers of nearby gradients
+
+can also add depth measures as template features
+
+while cosine dist is sub-linear for x~0, it's not robust w.r.t. shift/deformations, quantize orientations and use local histograms (SIFT, HoG), or DOT (gradients in the background) and more approaches.
+
+
+new approach!
+dist = sum{ max[ f(cos(grad)) over a neighbourhood] }
+local search is centered in the gradient position (not in a priori defined grid)
+
+Spreading orientations:
+1) binize gradient as 5bit binary
+2) spread to 1 radius (translation, deformation robustness)
+3) 5-bit encoding (8bit actually)
+
+
+Precomputing Response Maps:
+
+Precomputing the Response Maps Si. 
+Left: There is one response map for each quantized orientation. They store the maximal similarity between their corresponding orientation and the orientations orij already stored in the “Invariant
+Image”. Right: This can be done very efficiently by using the binary representation of the list of orientations in J as an
+index to lookup tables of the maximal similarities
+
+new image orientation UP:
+    for template_direction in template_directions:
+        calculate max(
+            cos_distance (UP, template_UP),
+            cos_distance (UP, template_DOWN),
+            cos_distance (UP, template_RIGHT),
+            cos_distance (UP, template_LEFT),
+        )
+new image orientation DOWN:
+    for template_direction in template_directions:
+        calculate max(
+            cos_distance (UP, template_UP),
+            cos_distance (UP, template_DOWN),
+            cos_distance (UP, template_RIGHT),
+            cos_distance (UP, template_LEFT),
+        )
+...
+optimization: precomupte the cos_distances
+
+optimization: 
+    parallelize lookup by using cache lines
+    SSE/GPU aware
+    avoiding checking EVERY position, but use a frequency of T pixels
+    load in cache bits k...k+t
+
+depth sensors:
+can be extended to kinect using surface normals (stealing from bilatera filters to  reduce surface noise)
+quantitize with precompute vectors
+These vectors are arranged in a circular cone shape originating from
+the peak of the cone pointing towards the camera.
+To make the quantization robust to noise, we assign to each location the quantized value that occurs most often in a 3 × 3 neighborhood
+
+S can be set to 3 and we obtain a theoretical gain in speed of at least a factor of 4096
+
+LINE-2D that uses the image gradients only, LINE-3D that uses the surface normals only and LINE-MOD, for multimodal, which uses botha
+
+linemod has less false positives
+
+lienmod phases
+1) feature extraction
+    a) color gradient Sobel filter (RGBd)
+    b) normals tailor series (rgbD)
+2) filtering
+    a) normals grouping
+    b) normals averaging
+    c) normals in the edges (color gradient eges) are dropped
+3) quantization
+    a) colors
+    b) normals
+4) pooling
+    a) store as <dominant feature, contour of the object>
+
+object is a matrix
+
+O = {T_i,j}
+T = template
+i = modalities
+j = template_nr
+several tempaltes from a single image
+
+O = (T1, ..., Ti, ... , Tn)
+i = camera_position_idx
+::wq
+c
+

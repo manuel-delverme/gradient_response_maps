@@ -9,10 +9,8 @@
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/white.css">
 
-		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
@@ -24,206 +22,201 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
+                <!--
 				<section>
                     <section>
-                        Why we put robots into the learning process?
-                        <aside class="notes">SCALE</aside>
-                        <ui style="text-align:left">
-                            <li class="fragment">
-                                Robots scale
-                                <aside class="notes">CHEAPER</aside>
-                            </li>
-                            <li class="fragment">
-                                Cheaper to train than a teacher
-                                <aside class="notes">ADAPTS</aside>
-                            </li>
-                            <li class="fragment">
-                                Student-paced, adaptive software.
-                                <aside class="notes">IMPROVES</aside>
-                            </li>
-                            <li class="fragment">
-                                Education can only improve with time
-                                <aside class="notes">INDIA, AFRICA</aside>
-                            </li>
-                            <li class="fragment">
-                                Raises the lowest common denominator for education
-                                <aside class="notes">PEERS</aside>
-                            </li>
-                            <li class="fragment">
-                                Robots as peers
-                                <aside class="notes">WHAT WE DO</aside>
-                            </li>
-                        </ui>
+                        What are LINE-{2D, 3D, MOD} bringing to object detection?
+                        <p>
+                        <span class="fragment">Gradient Response Maps </span><span class="fragment"> for Real-Time </span><span class="fragment">Detection of Texture-Less Objects</span>
+                        </p>
+                            <img class="fragment" src="http://localhost/docs/textureless.png"/>
+                            <aside class="notes"> few points of interest (doesn't allow for optimization in pixel search space) lack of texture, unreliable descriptors</aside>
+                        </p>
                     </section>
                     <section>
-                        Robots are socially inept:<br/>
-                        <p class="fragment">
-                            This influences their credibility as an educators
+                        <p>
+                            The real world is cluttered
                         </p>
+                        <p class="fragment">
+                        for example this classroom or an industrial complex<br/>
+                            <img width="45%" src="http://localhost/docs/sapienza.jpg" /> <img width="45%" src="http://localhost/docs/comau.jpg" />
+                            False positives, no space decomposition, no grid search
+                        </p>
+                        <aside class="notes">robust in.. </aside>
+                    </section>
+                    <section>
+                        <p> We achieve milliseconds speeds by:
+                        </p>
+                        <ol>
+                            <li class="fragment"> Rough quantization for gradient orientations, 8 bins </li>
+                            <li class="fragment">Information spreading </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <p>
+                            Quantization<br/>
+                            <img src="http://localhost/docs/quantization.png">
+                        </p>
+                        <p class="fragment">
+                            the Quantization operation creates a finite domain
+                            map 3x[0, 255] to [0, 8)
+                        </p>
+                    </section>
+                    <section>
+                        <p>
+                        the Quantization operation creates a <b>finite domain</b>
+                        </p>
+                        <p class="fragment">
+                             a finite domain enables look up tables and pre-calculation!
+                        </p>
+                    </section>
+                    <section>
+                        <p>
+                            Information spreading
+                        </p>
+                        <p class="fragment">
+                            information spreading allows to skip most of the image
+                            <br/>
+                            <img width="100%" src="http://localhost/docs/spread_operation.png">
+                        </p>
+                    </section>
+                    <section>
+                        you also get memory linearization (fewer cache misses) and <b>SSE</b> parallelization for free*
                     </section>
                 </section>
                 <section>
                     <section>
-                        Platform
-                        <img src="tega-full.jpg"/>
+                        <p>We bring three algorithms: </p>
+                        <p class="fragment">LINE-2D uses the image gradients only RGB</p>
+                        <p class="fragment">LINE-3D that uses the surface normals Depth</p>
+                        <p class="fragment">LINE-MOD, RGB+D</p>
                     </section>
                     <section>
-                        What is this work is aimed at?
-                        <p class="fragment">
-                            Help children improve language proficiency through storytelling
-                        </p>
-                        <p class="fragment">
-                            How to be a good conversationalist?
-                        </p>
-                        <p class="fragment">
-                            "Let them do all the talking" -cit somebody
+                        LINE-2D (modality 0, colors)
+                        <p class="">
+                            <img src="http://localhost/docs/quantized_colors.png">
                         </p>
                     </section>
                     <section>
-                        How are we achieving that?
-                        <p class="fragment">
-                            We use backchannels (mmh, yea, go on.. etc.) to keep the student engaged
-                        </p>
-                        <p class="fragment">
-                            Narrated stories will be longer
+                        LINE-2D (modality 0, colors)
+                        <p class="">
+                            <img src="http://localhost/docs/duck_color_gradients.png"> <br/>
+                            note: they appear in the contour
                         </p>
                     </section>
                     <section>
-                        Methodology, the first step
+                        LINE-3D (modality 1, depth)
+                        <p class="">
+                            <img src="http://localhost/docs/quantized_normals.png">
+                        </p>
+                    </section>
+                    <section>
+                        LINE-3D (modality 1, depth)
+                        <p class="">
+                        <img src="http://localhost/docs/duck_surface_normals.png"><br/> note: mostly they appear inside the object
+                        </p>
+                    </section>
+                    <section>
+                        LINE-MOD (modality 0+1)
+                        <img src="http://localhost/docs/both_modalities.png">
+                        <p class="fragment">
+                            <img src="http://localhost/docs/this_is_a_duck.png">
+                        </p>
+                    </section>
+                </section>
+                -->
+                <section>
+                    <section>
+                        <p>
+                        Linemod uses template matching:
+                        </p>
+                        <p class="fragment">
+                        Training phase:
+                        </p>
+                        <ol>
+                            <li class="fragment">snap a N pictures of the object from different camera poses </li>
+                            <li class="fragment">extract features with sobel filter and tailor series*</li>
+                            <li class="fragment">filtering: normals grouping -> averaging -> drop edge normals</li>
+                            <li class="fragment">quantization as seen before</li>
+                        </ol>
+                    </section>
+                    <section>
+                        <p>
+                            Build a response map (as before)
+                        </p>
+                        <p class="fragment"> 1) Feature spreading<br/> <img src="http://localhost/docs/spread_operation.png"></p>
+                    </section>
+                    <section>
+                            <p class=""> 2) bit encoding of the orientations (SSE friendly)</p>
+                            <img src="http://localhost/docs/binarization.png">
+                    </section>
+                    <section>
+                        <p class="">
+                            Cache the similarity results
+                        </p>
+                        <img width="100%" src="http://localhost/docs/similarity.png" />
+                        <p class="">
+                            results can be stored in a lookup table
+                        </p>
+                    </section>
+                    <section>
+                        calculating the response is now as easy as 
+                        <ol>
+                            <li> apply the quantize operation</li>
+                            <li> <code> response_strenght = lookup_table_UP[01110] </code> </li>
+                        </ol>
+                    </section>
+                    <section>
+                        <p class="">
+                            Memory linearization
+                            <ol>
+                                <li> preading was applied we just consider every $SPREAD_RADIUS pixel </li>
+                            <li> Store responses $SPREAD_RADIUS apart in continuous memory addresses </li>
+                            <li> Avoids cache misses on memory reads </li>
+                            </ol>
+                        </p>
+                    </section>
+                    <section>
+                        <p>TP-TN</p>
+                        <img class="" src="http://localhost/docs/results.png"/>
+                    </section>
+                    <section>
+                        <p>Speed</p>
+                        <img class="" src="http://localhost/docs/speed_results.png"/>
+                    </section>
+                </section>
+				<section>
+                    <section>
                         <ul>
-                        <li class="fragment">
-                            Answer "How do Children (4-6 yo.) request and understand feedback requests?"
-                        </li>
-                        <li class="fragment">
-                            Identify principal backchanneling behaviours
-                        </li>
-                        <li class="fragment">
-                            identify speaker cues for feedback
-                        </li>
-                        <li class="fragment">
-                            Characterize the bidirectionality of nonverbal behaviours (i.e., can children decode what they encode?)
-                        </li>
-                        </ul>
-                    </section>
-                    <section>
-                        Methodology, second step
-                        <p class="fragment">
-                            Define the robot's action space based children behaviours
-                        </p>
-                        <p class="fragment">
-                            Design backchanneling opportunity prediction (BOP) model to understand cues
-                        </p>
-                        <p class="fragment">
-                            embed the BOP model on a social robot and measure
-                        </p>
-                    </section>
-                    <section>
-                        Results:
-                        <p class="fragment">
-                            It works!
-                        </p>
-                        <p class="fragment">
-                            Children do perceive the BOP augmented robot as a more attentive listener than the non BOP robot
-                        </p>
+                            <li>
+                            Implemented in the major libraries (PCL, openCV) 
+                            </li>
+                            <li class="fragment">
+                            6 years later LINE-MOD is still used as benchmark for novel algorthms
+                            </li>
+                            <li class="fragment">
+                                Hinterstoisser writes very elegant c++ code (openCV)
+                            </li>
+                        <ul>
                     </section>
                 </section>
-				<section>
-                    <section>
-                        What is Backchannel?
-                        <ul class="fragment" style="text-align:left">
-                            <li> Nonverbal listener response behaviors</li>
-                            <li> Gaze lockin</li>
-                            <li> Noddin</li>
-                            <li> Utterances (such as yeah, ok, uh huh, mhmm</li>
-                        </ul>
-                    </section>
-                    <section>
-                        Part of the communication protocol:<br/>
-                        Backchanneling an important signal for both parties to communicate interest, understanding (or lack thereof), and error correction, and sentence completion.
-                    </section>
-                </section>
-				<section>
-				    <section>
-                        since this is a two-way conversation and  we can't just randomly utter "mmh"
-                        <br/>Without looking at the content of the speech (!)
-				    </section>
-				    <section>
-                        we use some features: <br/>
-                        voice activity detection (VAD)<br/>
-                        energy<br/>
-                        pitch<br/>
-                        low pitch located toward the end of an utterance.<br/>
-                        gaze<br/>
-                    </section>
-                </section>
-				<section>
-				    <section>
-                    Results:
-                        32 children from kindergarten, data from 20 children 
-                        (age M = 6.25, SD = 1.33; 45% female)
-                        Age was 5.22 years-old
-                        3 rounds of storytelling with different over a span of five weeks<br/>
-                    <img class="fragment" src="results.png"/>
-                    </section>
-
-                </section>
-				<section>
-				    <section>
-                    The Model
-
-                    Rule Based:
-                    Combinations of features:
-                        wordy & pause
-                        long pause
-                        pitch & pause
-                        and energy & pause
-
-				    </section>
-				    <section>
-                        <img src="models.png"/>
-                        Wordy Model:
-                        &gt;1.5s of speech, &gt;800ms of pause [Cooldown of 1.3s]
-				    </section>
-				    <section>
-                        <img src="models.png"/>
-                        Long Pause Model:
-                        1.0s of speech followed by a pause of 1.7s length [Cooldown of 1.3s]
-				    </section>
-				    <section>
-                        <img src="models.png"/>
-                        Pitch Model:
-                        a falling or rising pitch change that is followed by a pause
-                        1.0s of speech, 400ms pitch falling/rising by 25% for 300ms [CD 1.3s]
-				    </section>
-				    <section>
-                        <img src="models.png"/>
-                        Energy Model:
-                        a slope for 500ms,k300ms of pause, 30% slope. [CD 1.3s]
-				    </section>
-                </section>
-                <section>
-                    <a href="https://www.dropbox.com/sh/uo9gta3wd1qug2w/AAA-y0vlOepu2p2Sqtm4e8cTa?dl=0"> video! </a>
-                </section>
-
 			</div>
 		</div>
-
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
-
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				],
-                controlsTutorial: false,
-			});
-		</script>
+            <script src="lib/js/head.min.js"></script>
+            <script src="js/reveal.js"></script>
+            <script>
+                // More info about config & dependencies:
+                // - https://github.com/hakimel/reveal.js#configuration
+                // - https://github.com/hakimel/reveal.js#dependencies
+                Reveal.initialize({
+                    dependencies: [
+                        { src: 'plugin/markdown/marked.js' },
+                        { src: 'plugin/markdown/markdown.js' },
+                        { src: 'plugin/notes/notes.js', async: true },
+                        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+                    ],
+                    controlsTutorial: false,
+                });
+            </script>
 	</body>
 </html>
