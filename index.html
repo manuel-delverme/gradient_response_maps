@@ -22,7 +22,6 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-                <!--
 				<section>
                     <section>
                         What are LINE-{2D, 3D, MOD} bringing to object detection?
@@ -38,7 +37,6 @@
                             The real world is cluttered
                         </p>
                         <p class="fragment">
-                        for example this classroom or an industrial complex<br/>
                             <img width="45%" src="http://localhost/docs/sapienza.jpg" /> <img width="45%" src="http://localhost/docs/comau.jpg" />
                             False positives, no space decomposition, no grid search
                         </p>
@@ -75,8 +73,6 @@
                             Information spreading
                         </p>
                         <p class="fragment">
-                            information spreading allows to skip most of the image
-                            <br/>
                             <img width="100%" src="http://localhost/docs/spread_operation.png">
                         </p>
                     </section>
@@ -124,7 +120,6 @@
                         </p>
                     </section>
                 </section>
-                -->
                 <section>
                     <section>
                         <p>
@@ -134,15 +129,15 @@
                         Training phase:
                         </p>
                         <ol>
-                            <li class="fragment">snap a N pictures of the object from different camera poses </li>
-                            <li class="fragment">extract features with sobel filter and tailor series*</li>
-                            <li class="fragment">filtering: normals grouping -> averaging -> drop edge normals</li>
+                            <li class="fragment">N different camera poses </li>
+                            <li class="fragment">sobel filter (color) and tailor series* (depth)</li>
+                            <li class="fragment">some filtering (grouping, averaging, drop edge normals)</li>
                             <li class="fragment">quantization as seen before</li>
                         </ol>
                     </section>
                     <section>
                         <p>
-                            Build a response map (as before)
+                            Build a response map
                         </p>
                         <p class="fragment"> 1) Feature spreading<br/> <img src="http://localhost/docs/spread_operation.png"></p>
                     </section>
@@ -156,11 +151,11 @@
                         </p>
                         <img width="100%" src="http://localhost/docs/similarity.png" />
                         <p class="">
-                            results can be stored in a lookup table
+                            store in a lookup table
                         </p>
                     </section>
                     <section>
-                        calculating the response is now as easy as 
+                        calculating the response:
                         <ol>
                             <li> apply the quantize operation</li>
                             <li> <code> response_strenght = lookup_table_UP[01110] </code> </li>
@@ -168,11 +163,11 @@
                     </section>
                     <section>
                         <p class="">
-                            Memory linearization
+                            Detection:
                             <ol>
-                                <li> preading was applied we just consider every $SPREAD_RADIUS pixel </li>
-                            <li> Store responses $SPREAD_RADIUS apart in continuous memory addresses </li>
-                            <li> Avoids cache misses on memory reads </li>
+                                <li> thanks to spreading we just look at every $SPREAD_RADIUS pixel </li>
+                                <li> Store responses $SPREAD_RADIUS apart in continuous memory addresses </li>
+                                <li> Avoids cache misses on memory reads </li>
                             </ol>
                         </p>
                     </section>
