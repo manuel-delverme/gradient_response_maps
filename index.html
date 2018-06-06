@@ -28,7 +28,7 @@
                         <p>
                         <span class="fragment">Gradient Response Maps </span><span class="fragment"> for Real-Time </span><span class="fragment">Detection of Texture-Less Objects</span>
                         </p>
-                            <img class="fragment" src="/docs/textureless.png"/>
+                            <img class="fragment" src="docs/textureless.png"/>
                             <aside class="notes"> few points of interest (doesn't allow for optimization in pixel search space) lack of texture, unreliable descriptors</aside>
                         </p>
                     </section>
@@ -37,7 +37,7 @@
                             The real world is cluttered
                         </p>
                         <p class="fragment">
-                            <img width="45%" src="/docs/sapienza.jpg" /> <img width="45%" src="/docs/comau.jpg" />
+                            <img width="45%" src="docs/sapienza.jpg" /> <img width="45%" src="docs/comau.jpg" />
                             False positives, no space decomposition, no grid search
                         </p>
                         <aside class="notes">robust in.. </aside>
@@ -53,7 +53,7 @@
                     <section>
                         <p>
                             Quantization<br/>
-                            <img src="/docs/quantization.png">
+                            <img src="docs/quantization.png">
                         </p>
                         <p class="fragment">
                             the Quantization operation creates a finite domain
@@ -73,7 +73,7 @@
                             Information spreading
                         </p>
                         <p class="fragment">
-                            <img width="100%" src="/docs/spread_operation.png">
+                            <img width="100%" src="docs/spread_operation.png">
                         </p>
                     </section>
                     <section>
@@ -90,33 +90,33 @@
                     <section>
                         LINE-2D (modality 0, colors)
                         <p class="">
-                            <img src="/docs/quantized_colors.png">
+                            <img src="docs/quantized_colors.png">
                         </p>
                     </section>
                     <section>
                         LINE-2D (modality 0, colors)
                         <p class="">
-                            <img src="/docs/duck_color_gradients.png"> <br/>
+                            <img src="docs/duck_color_gradients.png"> <br/>
                             note: they appear in the contour
                         </p>
                     </section>
                     <section>
                         LINE-3D (modality 1, depth)
                         <p class="">
-                            <img src="/docs/quantized_normals.png">
+                            <img src="docs/quantized_normals.png">
                         </p>
                     </section>
                     <section>
                         LINE-3D (modality 1, depth)
                         <p class="">
-                        <img src="/docs/duck_surface_normals.png"><br/> note: mostly they appear inside the object
+                        <img src="docs/duck_surface_normals.png"><br/> note: mostly they appear inside the object
                         </p>
                     </section>
                     <section>
                         LINE-MOD (modality 0+1)
-                        <img src="/docs/both_modalities.png">
+                        <img src="docs/both_modalities.png">
                         <p class="fragment">
-                            <img src="/docs/this_is_a_duck.png">
+                            <img src="docs/this_is_a_duck.png">
                         </p>
                     </section>
                 </section>
@@ -139,17 +139,17 @@
                         <p>
                             Build a response map
                         </p>
-                        <p class="fragment"> 1) Feature spreading<br/> <img src="/docs/spread_operation.png"></p>
+                        <p class="fragment"> 1) Feature spreading<br/> <img src="docs/spread_operation.png"></p>
                     </section>
                     <section>
                             <p class=""> 2) bit encoding of the orientations (SSE friendly)</p>
-                            <img src="/docs/binarization.png">
+                            <img src="docs/binarization.png">
                     </section>
                     <section>
                         <p class="">
                             Cache the similarity results
                         </p>
-                        <img width="100%" src="/docs/similarity.png" />
+                        <img width="100%" src="docs/similarity.png" />
                         <p class="">
                             store in a lookup table
                         </p>
@@ -173,11 +173,11 @@
                     </section>
                     <section>
                         <p>TP-TN</p>
-                        <img class="" src="/docs/results.png"/>
+                        <img class="" src="docs/results.png"/>
                     </section>
                     <section>
                         <p>Speed</p>
-                        <img class="" src="/docs/speed_results.png"/>
+                        <img class="" src="docs/speed_results.png"/>
                     </section>
                 </section>
 				<section>
